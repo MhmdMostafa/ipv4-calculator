@@ -55,9 +55,9 @@ int main()
         Broadcast = brodcastGenerater(ipSections, subnetInt);
         networkAddress = networkGenerater(ipSections, subnetInt);
         print(ipSections, subnetInt, Broadcast, networkAddress, wildcard);
-        cout << "Class Type: " << classType(subnetInt) << endl;
-        cout << "IP Type: " << ipType(ipSections) << endl;
-        cout << "Aviable Hosts: " << totalHost << endl;
+        cout << "Class Type     : " << classType(subnetInt) << endl;
+        cout << "IP Type        : " << ipType(ipSections) << endl;
+        cout << "Aviable Hosts  : " << totalHost << endl;
         break;
 
     case 2: //Classful
@@ -76,9 +76,9 @@ int main()
                 totalHost = *(Broadcast + i) - *(networkAddress + i) - 1;
 
         print(ipSections, maskSections, Broadcast, networkAddress, wildcard);
-        cout << "Class Type: " << classType(maskSections) << endl;
-        cout << "IP Type: " << ipType(ipSections) << endl;
-        cout << "Aviable Hosts: " << totalHost << endl;
+        cout << "Class Type     : " << classType(maskSections) << endl;
+        cout << "IP Type        :" << ipType(ipSections) << endl;
+        cout << "Aviable Hosts  : " << totalHost << endl;
         break;
 
     case 3: //subnet Requird
@@ -97,9 +97,9 @@ int main()
                 totalHost = *(Broadcast + i) - *(networkAddress + i) - 1;
 
         print(ipSections, maskSections, Broadcast, networkAddress, wildcard);
-        cout << "Class Type: " << classType(maskSections) << endl;
-        cout << "IP Type: " << ipType(ipSections) << endl;
-        cout << "Aviable Hosts: " << totalHost << endl;
+        cout << "Class Type     : " << classType(maskSections) << endl;
+        cout << "IP Type        :" << ipType(ipSections) << endl;
+        cout << "Aviable Hosts  : " << totalHost << endl;
         break;
 
     case 4: //hosts number Requird
@@ -116,7 +116,7 @@ int main()
         binarySubnetStr = CIDR(subnet);
         for (int i = 0; i < 4; i++)
             *(subnetInt + i) = binaryToDecimal(binarySubnetStr, i * 8);
-
+        cout << "Mask: ";
         for (int i = 0; i < 4; i++)
             cout << *(subnetInt + i) << ",";
         cout << endl;
@@ -352,21 +352,21 @@ print() is a function that prints the ipSections, maskSections, Broadcast, netwo
 */
 void print(int *ipSections, int *maskSections, int *Broadcast, int *networkAddress, int *Wildcard)
 {
-    cout << "IP: ";
+    cout << "IP             : ";
     for (int i = 0; i < 4; i++)
     {
         cout << *(ipSections + i) << ",";
     }
     cout << endl;
 
-    cout << "Mask: ";
+    cout << "Mask           : ";
     for (int i = 0; i < 4; i++)
     {
         cout << *(maskSections + i) << ",";
     }
     cout << endl;
 
-    cout << "Broadcast: ";
+    cout << "Broadcast      : ";
     for (int i = 0; i < 4; i++)
     {
         cout << *(Broadcast + i) << ",";
@@ -379,7 +379,7 @@ void print(int *ipSections, int *maskSections, int *Broadcast, int *networkAddre
         cout << *(networkAddress + i) << ",";
     }
     cout << endl;
-    cout << "Wildcard Mask: ";
+    cout << "Wildcard Mask  : ";
     for (int i = 0; i < 4; i++)
     {
         cout << *(Wildcard + i) << ",";
